@@ -1,0 +1,23 @@
+!!!
+%html
+    %head
+        %title Practica Chat
+        %meta{:charset => "utf-8"}
+        %meta{:name => "viewport", :content => "width=device-width"}
+        %script{:type => "text/javascript", :src => "/js/libs/jquery-1.10.2.min.js"}
+        %script{:type => "text/javascript", :src => "/js/ajax.js"}
+        %link{:type => "text/css", :rel => "stylesheet", :href => "/css/groundwork.css"}
+    %body
+        %header.padded
+            .container
+                .row
+                    .one.half
+                        <h2 class="logo fadeInDown animated"><a href="/" target="_parent"><img src="http://i1377.photobucket.com/albums/ah55/Jazer_Abreu/onlinelogomaker-111814-2428111814-2431_zpsff57c4e7.png" alt="Logo"></a></h2>
+                    .one.half
+                        <p class="small double-pad-top no-pad-small-tablet align-right align-left-small-tablet"><a href="https://github.com/alu0100595727/sytw_practica6_chat" target="_parent">Github Project</a> SYTW-ULL<br>Created & Maintained by: <br> <a href="https://github.com/alu0100595727" target="_blank">Jazer Abreu</a><br><a href="https://github.com/alu0100595727" target="_blank">Javier Clemente</a></p>
+                %nav.nav.asphalt.gap-top{:role => "navigation"}
+                    %ul{:role=>"menubar"}
+                        %li
+                            %a.icon-home{:href=>"/"} Inicio
+            .container
+                =yield
