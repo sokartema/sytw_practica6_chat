@@ -19,6 +19,8 @@
                     %ul{:role=>"menubar"}
                         %li
                             %a.icon-home{:href=>"/"} Inicio
+                        %li
+                            %a.icon-check-sign{:href =>"/registro"} Registrarse
         .container
             =yield
 
@@ -42,4 +44,3 @@
                         .one.third
                             %a.blue.button.round.icon-adn{:href => "/about"} About
         %script{:src=> "https://code.jquery.com/jquery-2.1.1.min.js"}
-        %script{:src=> "/js/chat.js"}

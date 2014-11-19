@@ -5,8 +5,19 @@
         %meta{:charset => "utf-8"}
         %meta{:name => "viewport", :content => "width=device-width"}
         %script{:type => "text/javascript", :src => "/js/libs/jquery-1.10.2.min.js"}
-        %script{:type => "text/javascript", :src => "/js/ajax.js"}
         %link{:type => "text/css", :rel => "stylesheet", :href => "/css/groundwork.css"}
     %body
-        .row
-            %p Soy el chat #{@nickname}
+        .container
+            .asphalt.box.fadeInLeft.animated
+                #chat
+                .row
+                    .six.seventh
+                        %input#input
+                    .one.seventh
+                        %a.blue.button.double-gap-left#send Send
+
+
+
+
+    %script{:src=>"https://code.jquery.com/jquery-2.1.1.min.js"}
+    %script{:src=> "/js/chat.js"}
