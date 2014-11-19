@@ -1,0 +1,23 @@
+.row
+    .one.fifth
+    .three.fifths
+        -if(@error != nil)
+            -if(@error == "success")
+                %p.message.dismissible.success Registrado con exito.
+            -else
+                %p.message.dismissible.error El nombre escogido ya existe.
+        .asphalt.box.fadeIn.animated
+            %form{:action=>"/registro", :method => "POST"}
+                .row
+                    .one.third
+                        %label{:for => "nickname"} Introduce tu Nickname
+                        %input{:id => "nickname", :type => "text"}
+                        %label{:for => "password"} Introduce tu Password
+                        %input{:id => "password", :type => "password"}
+                    .one.third
+                    .one.third
+                .row.double-gap-top
+                    .one.half
+                        %button.green.round{:type => "submit"} Registrarse
+                    .one.half
+    .one.fifth
