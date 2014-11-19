@@ -1,0 +1,18 @@
+.row#intro
+    .one.fifth
+    .three.fifths
+        .asphalt.box.fadeInLeft.animated
+            %h2 Bienvenidos al chat de SYTW
+            .row
+                .one.third
+                    %label{:for => "nickname"} Introduce tu Nickname
+                    %input{:id => "nickname", :type => "text"}
+                .one.third
+                .one.third
+                    %i.icon-spinner.icon-spin.icon-4x
+            .row.double-pad-top
+                %button.button.green.round{:id => "entrar"} Entrar
+                %button.button.green.round{:id => "anonimo"} Anonimo
+
+
+    .one.fifth

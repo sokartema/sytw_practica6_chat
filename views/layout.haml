@@ -15,9 +15,31 @@
                         <h2 class="logo fadeInDown animated"><a href="/" target="_parent"><img src="http://i1377.photobucket.com/albums/ah55/Jazer_Abreu/onlinelogomaker-111814-2428111814-2431_zpsff57c4e7.png" alt="Logo"></a></h2>
                     .one.half
                         <p class="small double-pad-top no-pad-small-tablet align-right align-left-small-tablet"><a href="https://github.com/alu0100595727/sytw_practica6_chat" target="_parent">Github Project</a> SYTW-ULL<br>Created & Maintained by: <br> <a href="https://github.com/alu0100595727" target="_blank">Jazer Abreu</a><br><a href="https://github.com/alu0100595727" target="_blank">Javier Clemente</a></p>
-                %nav.nav.asphalt.gap-top{:role => "navigation"}
+                %nav.nav.black.gap-top{:role => "navigation"}
                     %ul{:role=>"menubar"}
                         %li
                             %a.icon-home{:href=>"/"} Inicio
-            .container
-                =yield
+        .container
+            =yield
+
+        .container
+            .container.row.black.box.absolute.bottom
+                .one.half
+                    .row.padded
+                        %h3 Sistemas y Tecnologias Web - Universidad de La Laguna
+                    .row.padded
+                        %h3 Curso 2014-2015
+
+                .one.half
+                    .row.padded
+                        .one.third
+                        .one.third
+                        .one.third
+                            %a.blue.button.round.icon-h-sign{:href => "/help"} Help
+                    .row.padded
+                        .one.third
+                        .one.third
+                        .one.third
+                            %a.blue.button.round.icon-adn{:href => "/about"} About
+        %script{:src=> "https://code.jquery.com/jquery-2.1.1.min.js"}
+        %script{:src=> "/js/chat.js"}
