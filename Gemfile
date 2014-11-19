@@ -1,11 +1,14 @@
 source 'https://rubygems.org'
 
 gem 'thin'
+gem 'sinatra-contrib'
 gem 'haml'
 gem 'data_mapper'
 gem 'sinatra'
 gem 'selenium-webdriver'
 gem 'capybara'
+gem 'rake'
+
 
 
 group :production do
@@ -19,6 +22,5 @@ group :development do
 
   gem 'dm-sqlite-adapter'
   gem 'sqlite3'
-  gem 'sinatra-contrib'
 
 end
