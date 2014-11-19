@@ -7,14 +7,18 @@
         %script{:type => "text/javascript", :src => "/js/libs/jquery-1.10.2.min.js"}
         %link{:type => "text/css", :rel => "stylesheet", :href => "/css/groundwork.css"}
     %body
-        .container
-            .asphalt.box.fadeInLeft.animated
-                #chat
-                .row
-                    .six.seventh
-                        %input#input
-                    .one.seventh
-                        %a.blue.button.double-gap-left#send Send
+        -if(@error != "error")
+            .container
+                .asphalt.box.fadeInLeft.animated
+                    #chat
+                    .row
+                        .six.seventh
+                            %input#input
+                        .one.seventh
+                            %a.blue.button.double-gap-left#send Send
+        -else
+            %p.message.dismissible.error El usuario no existe
+
 
 
 

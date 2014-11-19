@@ -38,6 +38,11 @@ end
 post '/chat' do
 
   @nickname = params[:nickname]
+  @error = nil
+
+  if User.count(:nickname => @nickname) == 0
+    @error = "error"
+  end  
 
   haml :chat , :layout => false
 end
