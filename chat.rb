@@ -6,7 +6,7 @@ require 'haml'
 require 'data_mapper'
 require 'bcrypt'
 
-set :environment, :development
+set :environment, :production
 
 configure :development do
 
