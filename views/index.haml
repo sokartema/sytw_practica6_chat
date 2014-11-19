@@ -1,4 +1,6 @@
 .row#intro
+    -if(@error == "error")
+        %p.message.dismissible.error El usuario ya existe o la contraseña es incorrecta
     .one.fifth
     .three.fifths
         .asphalt.box.fadeInLeft.animated

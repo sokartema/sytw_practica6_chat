@@ -4,6 +4,7 @@ require 'sinatra'
 require 'sinatra/reloader' if development?
 require 'haml'
 require 'data_mapper'
+require 'bcrypt'
 
 set :environment, :development
 
@@ -37,14 +38,30 @@ end
 
 post '/chat' do
 
-  @nickname = params[:nickname]
+  nickname = params[:nickname]
+  password = params[:password]
+  user = User.first(:nickname => nickname)
+  pass = nil
+
   @error = nil
 
-  if User.count(:nickname => @nickname) == 0
-    @error = "error"
-  end  
+  if user.password == params[:password]
+    pass = user.password
 
-  haml :chat , :layout => false
+  if User.count(:nickname => nickname , :password => pass) == 0
+    @error = "error"
+    haml :index , :layout => false
+  else
+    haml :chat , :layout => false
+  end
+
+  else
+
+    @error = "error"
+    haml :index , :layout => false
+  end
+
+
 end
 
 get '/help' do
@@ -71,6 +88,9 @@ post '/registro' do
 
   user.nickname = params[:nickname]
   user.password = params[:password]
+
+  puts params[:nickname]
+  puts params[:password]
 
   @error = nil
 

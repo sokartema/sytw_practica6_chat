@@ -1,7 +1,7 @@
 $(document).ready(function(){
 $("#entrar").click(function(){
 
-  var nickname = {'nickname': $('#nickname').val()}
+  var data = {nickname: $('#nickname').val(), password: $('#password').val()}
 
 
 $.ajax({
@@ -9,7 +9,7 @@ $.ajax({
 	url:'/chat',
 	type: 'post',
   dataType: 'html',
-  data: nickname,
+  data: data,
 
 	success: function(result){
 
