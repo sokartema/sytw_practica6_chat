@@ -9,7 +9,8 @@ require 'bcrypt'
 set :environment, :development
 
 set :protection , :except => :session_hijacking
- chat=[]
+chat=[]
+online=[]
 
 configure :development do
 
@@ -55,6 +56,7 @@ post '/chat' do
     @error = "error"
     haml :index , :layout => false
   else
+    online.insert(:nickname)		#add user online
     haml :chat , :layout => false
   end
 
@@ -69,7 +71,7 @@ end
 
 get '/send' do
   return [404, {}, "Not an ajax request"] unless request.xhr?
-  chat << "[#{Time.new.hour} : #{Time.new.min}] #{:nickname} > #{params['text']}"
+  chat << "[#{Time.new.hour} : #{Time.new.min}] #{nickname} > #{params['text']}"
   nil
   
 end
@@ -112,9 +114,6 @@ post '/registro' do
 
   user.nickname = params[:nickname]
   user.password = params[:password]
-
-  puts params[:nickname]
-  puts params[:password]
 
   @error = nil
 
