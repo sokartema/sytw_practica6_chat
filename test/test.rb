@@ -21,7 +21,8 @@ describe "Tests de la pagina raiz principal ('/') con metodo get" do
 		@textoTitulo="<title>Practica Chat</title>"
 		@textoCabecera="Chat"
 		@textoContenido="Acorta tu URL"
-		@css="/public/css/groundworks.css"
+		@css="/public/css/groundwork.css"
+		@js="/public/js/chat.js"
 	end
 
 	it "Carga de la web desde el servidor" do
