@@ -16,7 +16,9 @@ DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/mydataba
 end
 
 configure :production do
-DataMapper.setup(:default,ENV['HEROKU_POSTGRESQL_RED_URL'])
+
+DataMapper.setup(:default,ENV['HEROKU_POSTGRESQL_TEAL_URL'])
+
 end
 
 DataMapper::Logger.new($stdout, :debug)
