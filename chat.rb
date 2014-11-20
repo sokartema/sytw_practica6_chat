@@ -9,6 +9,7 @@ require 'bcrypt'
 set :environment, :development
 
 set :protection , :except => :session_hijacking
+ chat=[]
 
 configure :development do
 
@@ -74,7 +75,16 @@ get '/send' do
 end
 
 get '/update' do
-  
+  return [404, {}, "Not an ajax request"] unless request.xhr?
+  @updates = chat[params['last'].to_i..-1] || []
+
+  @last = chat.size
+  erb <<-'HTML', :layout => false
+      <% @updates.each do |phrase| %>
+        <%= phrase %> <br />
+      <% end %>
+      <span data-last="<%= @last %>"></span>
+  HTML
 end
 
 
