@@ -43,31 +43,47 @@ end
 
 post '/chat' do
 
-  nickname = params[:nickname]
-  password = params[:password]
-  user = User.first(:nickname => nickname)
-  pass = nil
-  session[:nickname] = nickname
+  if(params[:nickname] == nil)
 
-  @error = nil
+        nickname = "Anonimo-" + BCrypt::Password.create(rand(10000000000000)).to_s.slice(20,5)
+        session[:nickname] = nickname
+        if online.index(nickname) != nil
+          @error = "error"
+          haml :index , :layout => false
+        else
+          online << nickname		#add user online
+          haml :chat , :layout => false
+        end
 
-  if user.password == params[:password]
-    pass = user.password
-
-  if User.count(:nickname => nickname , :password => pass) == 0
-    @error = "error"
-    haml :index , :layout => false
-  else
-    online << nickname		#add user online
-    haml :chat , :layout => false
-  end
 
   else
 
-    @error = "error"
-    haml :index , :layout => false
-  end
+      nickname = params[:nickname]
+      password = params[:password]
+      user = User.first(:nickname => nickname)
+      pass = nil
+      session[:nickname] = nickname
 
+      @error = nil
+
+      if user.password == params[:password]
+        pass = user.password
+
+      if User.count(:nickname => nickname , :password => pass) == 0 || online.index(nickname) != nil
+        @error = "error"
+        haml :index , :layout => false
+      else
+        online << nickname		#add user online
+        haml :chat , :layout => false
+      end
+
+      else
+
+        @error = "error"
+        haml :index , :layout => false
+      end
+
+  end
 
 end
 
