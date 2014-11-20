@@ -8,6 +8,8 @@ require 'bcrypt'
 
 set :environment, :development
 
+set :protection , :except => :session_hijacking
+
 configure :development do
 
 DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/mydatabase.db" )
