@@ -7,6 +7,10 @@ require 'minitest/autorun'
 require 'rack/test'
 require 'selenium-webdriver'
 require 'capybara'
+require 'coveralls'
+
+Coveralls.wear!
+
 
 
 include Rack::Test::Methods
@@ -49,7 +53,7 @@ describe "Tests de la pagina raiz principal ('/') con metodo get" do
 
 		assert File.exists?(path), "Debe estar el CSS en el servidor"
 	end
-	
+
 	it "Comprueba si esta el Javascript en el servidor" do
 
 		path = File.absolute_path(__FILE__)
@@ -63,12 +67,12 @@ describe "Tests de la pagina raiz principal ('/') con metodo get" do
 end
 
 describe "Test para datamapper" do
-	
+
 	it "Crea nuevo link" do
 		prueba=User.new(:nickname => "Prueba")
 		assert (prueba.save)
 	end
-	
+
 	it "Borra el link" do
 		prueba=User.first(:nickname => "Prueba")
 		assert(prueba.destroy)
@@ -84,33 +88,33 @@ describe "Capybara and selenium tests" do
 	    @site='localhost:9292'
 	end
     end
-    
+
     it "log anonymous" do
       Capybara.visit(@site)
       Capybara.click_button('anonimo')
       Capybara.fill_in 'text', :with => 'Prueba'
       assert(true)
     end
-    
+
     it "log with nick" do
       Capybara.visit(@site)
       Capybara.fill_in 'nickname', :with => 'Test'
       Capybara.click_button('entrar')
       assert(true)
     end
-    
+
     it "register" do
       Capybara.visit(@site)
       Capybara.click_link('registro')
       assert(true)
     end
-    
+
     it "posting" do
     end
-    
+
     after(:all) do
       Capybara.use_default_driver
     end
-    
-    
+
+
 end

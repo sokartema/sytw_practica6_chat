@@ -37,11 +37,15 @@ set :session_secret, '*&(^#234a)'
 
 get '/' do
 
+  @chat = false
+
   haml :index
 
 end
 
 post '/chat' do
+
+  @chat = false
 
   if(params[:nickname] == nil)
 
@@ -49,10 +53,11 @@ post '/chat' do
         session[:nickname] = nickname
         if online.index(nickname) != nil
           @error = "error"
-          haml :index , :layout => false
+          haml :index
         else
           online << nickname		#add user online
-          haml :chat , :layout => false
+          @chat = true
+          haml :chat
         end
 
 
@@ -64,23 +69,24 @@ post '/chat' do
       pass = nil
       session[:nickname] = nickname
 
-      @error = nil
+      @error = false
 
       if user.password == params[:password]
         pass = user.password
 
       if User.count(:nickname => nickname , :password => pass) == 0 || online.index(nickname) != nil
         @error = "error"
-        haml :index , :layout => false
+        haml :index
       else
         online << nickname		#add user online
-        haml :chat , :layout => false
+        @chat = true
+        haml :chat
       end
 
       else
 
         @error = "error"
-        haml :index , :layout => false
+        haml :index
       end
 
   end
@@ -126,23 +132,29 @@ end
 
 get '/help' do
 
+  @chat = false
+
   haml :help
 
 end
 
 get '/about' do
 
+  @chat = false
   haml :about
 
 end
 
 get '/registro' do
 
+  @chat = false
   haml :registro
 
 end
 
 post '/registro' do
+
+  @chat = false
 
   user = User.new
 
@@ -163,12 +175,22 @@ post '/registro' do
 
 end
 
-get '/logout' do
+get '/logout/:page' do
 
   online.delete_at(online.index(session[:nickname]))
 
   session.clear
 
+  if(params[:page] == "index")
+
   redirect '/'
 
+  elsif(params[:page] == "help")
+
+  redirect '/help'
+
+  elsif(params[:page] == "about")
+  redirect '/about'
+
+  end
 end

@@ -3,11 +3,16 @@ $('#text').keypress(
     if( e.keyCode==13 ){
       $.get('/send',{text:$('#text').val()});
       $('#text').val('');
-
-
     }
   }
 );
+
+$('#send').click(function(){
+  
+      $.get('/send',{text:$('#text').val()});
+      $('#text').val('');
+});
+
 
 (function() {
   var last = 0;
@@ -52,5 +57,5 @@ window.onbeforeunload = function(event) {
 
 }
 window.onunload = function(){
-  $.get('/logout');
+  $.get('/logout/index');
 };

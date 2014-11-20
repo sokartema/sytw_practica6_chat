@@ -13,7 +13,9 @@ $.ajax({
 
 	success: function(result){
 
-		$("#intro").html(result);
+		document.open();
+    document.write(result);
+    document.close();
 	}
 
 
@@ -34,7 +36,9 @@ $.ajax({
 
   success: function(result){
 
-    $("#intro").html(result);
+    document.open();
+    document.write(result);
+    document.close();
   }
 
 
