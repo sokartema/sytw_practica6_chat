@@ -78,8 +78,11 @@ end
 describe "Capybara and selenium tests" do
     before (:all) do
 	driver=Capybara.current_driver = :selenium
-	@site='localhost:9292'
-	@site1='http://practicachatsytw.herokuapp.com'
+	#@site='localhost:9292'
+	@site='http://practicachatsytw.herokuapp.com'
+	if (ARGV[0].to_s == "local")
+	    @site='localhost:9292'
+	end
     end
     
     it "log anonymous" do

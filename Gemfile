@@ -6,7 +6,7 @@ gem 'data_mapper'
 gem 'sinatra'
 gem 'rake'
 gem 'bcrypt'
-
+gem 'coveralls',require: false
 
 
 group :production do
