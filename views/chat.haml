@@ -1,26 +1,14 @@
-!!!
-%html
-    %head
-        %title Practica Chat
-        %meta{:charset => "utf-8"}
-        %meta{:name => "viewport", :content => "width=device-width"}
-        %script{:type => "text/javascript", :src => "/js/libs/jquery-1.10.2.min.js"}
-        %link{:type => "text/css", :rel => "stylesheet", :href => "/css/groundwork.css"}
-    %body
-        .container
-            .asphalt.box.fadeInLeft.animated
-                .row
-                    .four.fifths
-                        #chat{:style => "max-width:100%; max-height:200px;overflow-y:scroll;"}
-                    .one.fifth
-                        #users{:style => "max-width:100%; max-height:200px;overflow-y:scroll;"}
-                .row.double-padded
-                    .five.seventh
-                        %input#text
-                    .one.seventh
-                        %a.blue.button.double-gap-left#send Send
-                    .one.seventh
-                        %a.red.button.double-gap-left{:href => "/logout"} Logout
-
-    %script{:src=>"https://code.jquery.com/jquery-2.1.1.min.js"}
-    %script{:src=> "/js/chat.js"}
+.container
+    .asphalt.box.fadeInLeft.animated
+        .row
+            .four.fifths
+                #chat{:style => "max-width:100%; max-height:200px;overflow-y:scroll;"}
+            .one.fifth
+                #users{:style => "max-width:100%; max-height:200px;overflow-y:scroll;"}
+        .row.double-padded
+            .five.seventh
+                %input#text
+            .one.seventh
+                %button.blue.double-gap-left#send Send
+            .one.seventh
+                %a.red.button.double-gap-left{:href => "/logout/index"} Logout
