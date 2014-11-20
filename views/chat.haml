@@ -9,17 +9,18 @@
     %body
         .container
             .asphalt.box.fadeInLeft.animated
-                #chat
                 .row
-                    .six.seventh
+                    .four.fifths
+                        #chat{:style => "max-width:100%; max-height:200px;overflow-y:scroll;"}
+                    .one.fifth
+                        #users{:style => "max-width:100%; max-height:200px;overflow-y:scroll;"}
+                .row.double-padded
+                    .five.seventh
                         %input#text
                     .one.seventh
                         %a.blue.button.double-gap-left#send Send
-
-
-
-
-
+                    .one.seventh
+                        %a.red.button.double-gap-left{:href => "/logout"} Logout
 
     %script{:src=>"https://code.jquery.com/jquery-2.1.1.min.js"}
     %script{:src=> "/js/chat.js"}

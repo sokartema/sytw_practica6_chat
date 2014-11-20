@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# encoding: utf-8
 require 'rubygems'
 require 'sinatra'
 require 'sinatra/reloader' if development?
@@ -46,6 +47,7 @@ post '/chat' do
   password = params[:password]
   user = User.first(:nickname => nickname)
   pass = nil
+  session[:nickname] = nickname
 
   @error = nil
 
@@ -56,7 +58,7 @@ post '/chat' do
     @error = "error"
     haml :index , :layout => false
   else
-    online.insert(:nickname)		#add user online
+    online << nickname		#add user online
     haml :chat , :layout => false
   end
 
@@ -71,9 +73,9 @@ end
 
 get '/send' do
   return [404, {}, "Not an ajax request"] unless request.xhr?
-  chat << "[#{Time.new.hour} : #{Time.new.min}] #{nickname} > #{params['text']}"
+  chat << "[#{Time.new.hour} : #{Time.new.min}] #{session[:nickname]} > #{params['text']}"
   nil
-  
+
 end
 
 get '/update' do
@@ -87,6 +89,22 @@ get '/update' do
       <% end %>
       <span data-last="<%= @last %>"></span>
   HTML
+end
+
+get '/updateusers' do
+
+  return [404, {}, "Not an ajax request"] unless request.xhr?
+  @updates = online[params['users'].to_i..-1] || []
+
+  @users = online.size
+  erb <<-'HTML', :layout => false
+  <% @updates.each do |phrase| %>
+    <%= phrase %> <br />
+    <% end %>
+    <span data-last="<%= @last %>"></span>
+    HTML
+
+
 end
 
 
@@ -126,5 +144,15 @@ post '/registro' do
 
 
   haml :registro
+
+end
+
+get '/logout' do
+
+  online.delete_at(online.index(session[:nickname]))
+
+  session.clear
+
+  haml :index
 
 end

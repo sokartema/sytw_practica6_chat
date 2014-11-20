@@ -1,14 +1,11 @@
 source 'https://rubygems.org'
 
 gem 'thin'
-gem 'sinatra-contrib'
 gem 'haml'
-<<<<<<< Updated upstream
 gem 'data_mapper'
 gem 'sinatra'
-gem 'selenium-webdriver'
-gem 'capybara'
 gem 'rake'
+gem 'bcrypt'
 
 
 
@@ -23,12 +20,7 @@ group :development do
 
   gem 'dm-sqlite-adapter'
   gem 'sqlite3'
-
-=======
-gem 'selenium-webdriver'
-
-group :development do
+  gem 'selenium-webdriver'
   gem 'sinatra-contrib'
   gem 'capybara'
->>>>>>> Stashed changes
 end
