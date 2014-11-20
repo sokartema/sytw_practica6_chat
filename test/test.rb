@@ -44,7 +44,7 @@ describe "Tests de la pagina raiz principal ('/') con metodo get" do
 
 		path = File.absolute_path(__FILE__)
 		path=path+@css
-		path=path.split('/test/test_u.rb')
+		path=path.split('/test/test.rb')
 		path=path[0]+path[1]
 
 		assert File.exists?(path), "Debe estar el CSS en el servidor"
@@ -54,7 +54,7 @@ describe "Tests de la pagina raiz principal ('/') con metodo get" do
 
 		path = File.absolute_path(__FILE__)
 		path=path+@js
-		path=path.split('/test/test_u.rb')
+		path=path.split('/test/test.rb')
 		path=path[0]+path[1]
 
 		assert File.exists?(path), "Debe estar el Javascript en el servidor"
@@ -78,17 +78,28 @@ end
 describe "Capybara and selenium tests" do
     before (:all) do
 	driver=Capybara.current_driver = :selenium
+	@site='localhost:9292'
+	@site1='http://practicachatsytw.herokuapp.com'
     end
     
     it "log anonymous" do
-      Capybara.visit('localhost:9292')
+      Capybara.visit(@site)
       Capybara.click_button('anonimo')
+      Capybara.fill_in 'text', :with => 'Prueba'
+      assert(true)
     end
     
     it "log with nick" do
-      Capybara.visit('localhost:9292')
+      Capybara.visit(@site)
       Capybara.fill_in 'nickname', :with => 'Test'
       Capybara.click_button('entrar')
+      assert(true)
+    end
+    
+    it "register" do
+      Capybara.visit(@site)
+      Capybara.click_link('registro')
+      assert(true)
     end
     
     it "posting" do
@@ -97,5 +108,6 @@ describe "Capybara and selenium tests" do
     after(:all) do
       Capybara.use_default_driver
     end
+    
     
 end

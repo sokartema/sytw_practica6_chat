@@ -26,17 +26,20 @@ describe "Capybara and selenium tests" do
       Capybara.visit(@site)
       Capybara.click_button('anonimo')
       Capybara.fill_in 'text', :with => 'Prueba'
+      assert(true)
     end
     
     it "log with nick" do
       Capybara.visit(@site)
       Capybara.fill_in 'nickname', :with => 'Test'
       Capybara.click_button('entrar')
+      assert(true)
     end
     
     it "register" do
       Capybara.visit(@site)
       Capybara.click_link('registro')
+      assert(true)
     end
     
     it "posting" do
