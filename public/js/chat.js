@@ -45,8 +45,12 @@ window.onbeforeunload = function(event) {
     event.returnValue = confirmClose;
   }
 
-  $.get('/logout')
+
   // For Safari
   return confirmClose;
 
+
 }
+window.onunload = function(){
+  $.get('/logout');
+};
