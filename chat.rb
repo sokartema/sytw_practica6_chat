@@ -171,6 +171,6 @@ get '/logout' do
 
   session.clear
 
-  haml :index
+  redirect '/'
 
 end
