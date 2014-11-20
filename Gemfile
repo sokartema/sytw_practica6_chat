@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 
 gem 'thin'
-gem 'sinatra-contrib'
+gem 'sinatra-contrib' , "1.3.2"
 gem 'haml'
 gem 'data_mapper'
-gem 'sinatra'
+gem 'sinatra', "1.3.3"
 gem 'selenium-webdriver'
 gem 'capybara'
 gem 'rake'
