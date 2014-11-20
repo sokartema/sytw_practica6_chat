@@ -3,7 +3,8 @@
     .three.fifths
         -if(@error != nil)
             -if(@error == "success")
-                %p.message.dismissible.success Registrado con exito.
+                %p.message.dismissible.success 
+                    %a{:href => "/"} Registrado con exito.
             -else
                 %p.message.dismissible.error El nombre escogido ya existe.
         .asphalt.box.fadeIn.animated

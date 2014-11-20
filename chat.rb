@@ -66,6 +66,18 @@ post '/chat' do
 
 end
 
+get '/send' do
+  return [404, {}, "Not an ajax request"] unless request.xhr?
+  chat << "[#{Time.new.hour} : #{Time.new.min}] #{:nickname} > #{params['text']}"
+  nil
+  
+end
+
+get '/update' do
+  
+end
+
+
 get '/help' do
 
   haml :help
