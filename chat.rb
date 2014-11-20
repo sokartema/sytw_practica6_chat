@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# encoding: utf-8 
+# encoding: utf-8
 require 'rubygems'
 require 'sinatra'
 require 'sinatra/reloader' if development?
@@ -169,6 +169,6 @@ get '/logout' do
 
   session.clear
 
-  haml :index
+  redirect '/'
 
 end
