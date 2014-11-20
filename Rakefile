@@ -1,9 +1,24 @@
-desc "Run capybara test"
+desc "Run tests"
 task :default => :test
 
 desc "Run capybara test"
+task :capybara do
+  sh "ruby test/test_c.rb"
+end
+
+desc "Run all test"
 task :test do
   sh "ruby test/test.rb"
+end
+
+desc "Run Selenium test"
+task :selenium do
+  sh "ruby test/test_s.rb"
+end
+
+desc "Run unitary test"
+task :unittest do
+  sh "ruby test/test_u.rb"
 end
 
 desc "Run server with sinatra"

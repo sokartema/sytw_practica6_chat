@@ -5,8 +5,6 @@ require_relative '../chat.rb'
 require 'test/unit'
 require 'minitest/autorun'
 require 'rack/test'
-require 'selenium-webdriver'
-require 'capybara'
 
 
 include Rack::Test::Methods
@@ -21,7 +19,8 @@ describe "Tests de la pagina raiz principal ('/') con metodo get" do
 		@textoTitulo="<title>Practica Chat</title>"
 		@textoCabecera="Chat"
 		@textoContenido="Acorta tu URL"
-		@css="/public/css/groundworks.css"
+		@css="/public/css/groundwork.css"
+		@js="/public/js/chat.js"
 	end
 
 	it "Carga de la web desde el servidor" do
@@ -39,7 +38,7 @@ describe "Tests de la pagina raiz principal ('/') con metodo get" do
 		assert last_response.body.include?(@textoCabecera), "El titulo de cabecera tiene que estar en el contenido"
 
 	end
-
+	
 	it "Comprueba si esta el CSS en el servidor" do
 
 		path = File.absolute_path(__FILE__)
@@ -73,29 +72,4 @@ describe "Test para datamapper" do
 		prueba=User.first(:nickname => "Prueba")
 		assert(prueba.destroy)
 	end
-end
-
-describe "Capybara and selenium tests" do
-    before (:all) do
-	driver=Capybara.current_driver = :selenium
-    end
-    
-    it "log anonymous" do
-      Capybara.visit('localhost:9292')
-      Capybara.click_button('anonimo')
-    end
-    
-    it "log with nick" do
-      Capybara.visit('localhost:9292')
-      Capybara.fill_in 'nickname', :with => 'Test'
-      Capybara.click_button('entrar')
-    end
-    
-    it "posting" do
-    end
-    
-    after(:all) do
-      Capybara.use_default_driver
-    end
-    
 end
