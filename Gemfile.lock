@@ -129,7 +129,7 @@ DEPENDENCIES
   pg
   rake
   selenium-webdriver
-  sinatra
+  sinatra (~> 1.4.5)
   sinatra-contrib
   sqlite3
   thin
