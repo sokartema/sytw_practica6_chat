@@ -30,6 +30,11 @@ describe "Test APP chat: Comprobacion de funciones" do
     expect(last_response.body).to eq("")
   end
 
+  it "index" do
+    get '/'
+    (expect(last_response.status).to eq(200))
+  end
+
   it "Envio sin sesion" do
     get '/send',env = {}
     expect(last_response.body).to eq("Not an ajax request")
@@ -104,6 +109,11 @@ describe "Test APP chat: Comprobacion de funciones" do
     it "Registro" do
       post '/registro',{}, {"HTTP_X_REQUESTED_WITH" => "XMLHttpRequest"}
       expect(last_response).to be_ok
+    end
+
+    it "logout/index" do
+      get '/logout/index'
+      (expect(last_response.status).to eq(500))
     end
 
 
