@@ -1,6 +1,6 @@
 ![logo](http://i1377.photobucket.com/albums/ah55/Jazer_Abreu/onlinelogomaker-111814-2428111814-2431_zpsff57c4e7.png)
 
-[![Coverage Status](https://coveralls.io/repos/alu0100595727/sytw_practica6_chat/badge.png)](https://coveralls.io/r/alu0100595727/sytw_practica6_chat)
+[![Coverage Status](https://coveralls.io/repos/alu0100595727/sytw_practica6_chat/badge.png?branch=master)](https://coveralls.io/r/alu0100595727/sytw_practica6_chat?branch=master)
 [![Build Status](https://travis-ci.org/alu0100595727/sytw_practica6_chat.svg?branch=master)](https://travis-ci.org/alu0100595727/sytw_practica6_chat)
 
 ### Funcionalidad
