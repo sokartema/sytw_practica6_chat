@@ -40,6 +40,12 @@ describe "Test APP chat: Comprobacion de funciones" do
     expect(last_response.body).to eq("Not an ajax request")
   end
 
+  it "Post chat" do
+    post '/chat',{}, {"HTTP_X_REQUESTED_WITH" => "XMLHttpRequest"}
+    expect(last_response).to be_ok
+
+  end
+
   it "Update HTTP_X_REQUESTED_WITH" do
     get '/update',{}, {"HTTP_X_REQUESTED_WITH" => "XMLHttpRequest"}
     expect(last_response).to be_ok
@@ -50,12 +56,31 @@ describe "Test APP chat: Comprobacion de funciones" do
     expect(last_response.body).to eq("<h1>Not Found</h1>")
   end
 
+  it "Update Users" do
+    get '/updateusers',{}, {"HTTP_X_REQUESTED_WITH" => "XMLHttpRequest"}
+    expect(last_response).to be_ok
+  end
+
+  it "Help" do
+    get '/help',{}, {"HTTP_X_REQUESTED_WITH" => "XMLHttpRequest"}
+    expect(last_response).to be_ok
+  end
+
+  it "About" do
+    get '/about',{}, {"HTTP_X_REQUESTED_WITH" => "XMLHttpRequest"}
+    expect(last_response).to be_ok
+  end
+
+  it "Registro" do
+    get '/registro',{}, {"HTTP_X_REQUESTED_WITH" => "XMLHttpRequest"}
+    expect(last_response).to be_ok
+  end
 
   it "chat update" do
     get '/chat/update'
     expect(last_response.body).to eq("<h1>Not Found</h1>")
   end
-  
+
   it "Crea nuevo link" do
       prueba=User.new(:nickname => "Prueba")
       expect(prueba.save).to eq(true)
@@ -65,7 +90,7 @@ describe "Test APP chat: Comprobacion de funciones" do
       prueba=User.first(:nickname => "Prueba")
       expect(prueba.destroy).to eq(true)
   end
-  
+
   it "Comprueba si esta el CSS en el servidor" do
 		@css="/public/css/groundwork.css"
 		path = File.absolute_path(__FILE__)
@@ -75,6 +100,12 @@ describe "Test APP chat: Comprobacion de funciones" do
 
 	expect (File.exists?(path))
     end
+
+    it "Registro" do
+      post '/registro',{}, {"HTTP_X_REQUESTED_WITH" => "XMLHttpRequest"}
+      expect(last_response).to be_ok
+    end
+
 
     it "Comprueba si esta el Javascript en el servidor" do
 		@js="/public/js/chat.js"
