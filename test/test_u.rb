@@ -5,6 +5,9 @@ require_relative '../chat.rb'
 require 'test/unit'
 require 'minitest/autorun'
 require 'rack/test'
+require 'coveralls'
+
+Coveralls.wear!
 
 
 include Rack::Test::Methods
@@ -38,7 +41,7 @@ describe "Tests de la pagina raiz principal ('/') con metodo get" do
 		assert last_response.body.include?(@textoCabecera), "El titulo de cabecera tiene que estar en el contenido"
 
 	end
-	
+
 	it "Comprueba si esta el CSS en el servidor" do
 
 		path = File.absolute_path(__FILE__)
@@ -48,7 +51,7 @@ describe "Tests de la pagina raiz principal ('/') con metodo get" do
 
 		assert File.exists?(path), "Debe estar el CSS en el servidor"
 	end
-	
+
 	it "Comprueba si esta el Javascript en el servidor" do
 
 		path = File.absolute_path(__FILE__)
@@ -62,12 +65,12 @@ describe "Tests de la pagina raiz principal ('/') con metodo get" do
 end
 
 describe "Test para datamapper" do
-	
+
 	it "Crea nuevo link" do
 		prueba=User.new(:nickname => "Prueba")
 		assert (prueba.save)
 	end
-	
+
 	it "Borra el link" do
 		prueba=User.first(:nickname => "Prueba")
 		assert(prueba.destroy)

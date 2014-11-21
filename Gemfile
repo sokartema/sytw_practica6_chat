@@ -7,7 +7,7 @@ gem 'sinatra'
 gem 'rake'
 gem 'bcrypt'
 gem 'coveralls',require: false
-
+gem 'rspec'
 
 group :production do
 

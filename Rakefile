@@ -1,5 +1,5 @@
 desc "Run tests"
-task :default => :test
+task :default => :rspec
 
 desc "Run capybara test"
 task :capybara do
@@ -39,4 +39,9 @@ end
 desc "Ps heroku"
 task :ps do
   sh "heroku ps"
+end
+
+desc "Test rspec"
+task :rspec do
+  sh "rspec -I. test/rspec_test.rb"
 end
