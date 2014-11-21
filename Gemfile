@@ -8,6 +8,7 @@ gem 'rake'
 gem 'bcrypt'
 gem 'coveralls',require: false
 
+
 group :production do
 
   gem "do_postgres"

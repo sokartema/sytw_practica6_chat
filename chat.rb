@@ -7,7 +7,7 @@ require 'haml'
 require 'data_mapper'
 require 'bcrypt'
 
-set :environment, :production
+set :environment, :development
 
 set :protection , :except => :session_hijacking
 chat=[]
