@@ -8,7 +8,7 @@ $('#text').keypress(
 );
 
 $('#send').click(function(){
-  
+
       $.get('/send',{text:$('#text').val()});
       $('#text').val('');
 });
