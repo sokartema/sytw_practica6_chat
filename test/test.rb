@@ -90,20 +90,9 @@ describe "Capybara and selenium tests" do
 	end
     end
 
-    before (:each) do
-
-        if page.driver.class == Capybara::Selenium::Driver
-        page.driver.browser.switch_to.alert.accept
-
-        elsif page.driver.class == Capybara::Webkit::Driver
-        sleep 1
-
-        page.driver.browser.accept_js_confirms
-
-      end
-    end
 
     it "log anonymous" do
+      page.driver.browser.switch_to.alert.accept
       Capybara.visit(@site)
       Capybara.click_button('anonimo')
       Capybara.fill_in 'text', :with => 'Prueba'
@@ -111,6 +100,7 @@ describe "Capybara and selenium tests" do
     end
 
     it "log with nick" do
+      page.driver.browser.switch_to.alert.accept
       Capybara.visit(@site)
       Capybara.fill_in 'nickname', :with => 'Test'
       Capybara.click_button('entrar')
@@ -118,6 +108,7 @@ describe "Capybara and selenium tests" do
     end
 
     it "register" do
+      page.driver.browser.switch_to.alert.accept
       Capybara.visit(@site)
       Capybara.click_link('registro')
       assert(true)
