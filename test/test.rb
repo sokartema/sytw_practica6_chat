@@ -90,6 +90,19 @@ describe "Capybara and selenium tests" do
 	end
     end
 
+    before (:each) do
+
+        if page.driver.class == Capybara::Selenium::Driver
+        page.driver.browser.switch_to.alert.accept
+
+        elsif page.driver.class == Capybara::Webkit::Driver
+        sleep 1
+
+        page.driver.browser.accept_js_confirms
+
+      end
+    end
+
     it "log anonymous" do
       Capybara.visit(@site)
       Capybara.click_button('anonimo')
