@@ -25,7 +25,15 @@ describe "Tests de la pagina raiz principal ('/') con metodo get" do
 		@css="/public/css/groundwork.css"
 		@js="/public/js/chat.js"
 	end
+it "Crea nuevo link" do
+		prueba=User.new(:nickname => "Prueba")
+		assert (prueba.save)
+	end
 
+	it "Borra el link" do
+		prueba=User.first(:nickname => "Prueba")
+		assert(prueba.destroy)
+	end
 	it "Carga de la web desde el servidor" do
 	  get '/'
 	  assert last_response.ok?

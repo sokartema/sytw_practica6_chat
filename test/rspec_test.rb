@@ -55,5 +55,35 @@ describe "Test APP chat: Comprobacion de funciones" do
     get '/chat/update'
     expect(last_response.body).to eq("<h1>Not Found</h1>")
   end
+  
+  it "Crea nuevo link" do
+      prueba=User.new(:nickname => "Prueba")
+      expect(prueba.save).to eq(true)
+  end
+
+  it "Borra el link" do
+      prueba=User.first(:nickname => "Prueba")
+      expect(prueba.destroy).to eq(true)
+  end
+  
+  it "Comprueba si esta el CSS en el servidor" do
+		@css="/public/css/groundwork.css"
+		path = File.absolute_path(__FILE__)
+		path=path+@css
+		path=path.split('/test/rspec_test.rb')
+		path=path[0]+path[1]
+
+	expect (File.exists?(path))
+    end
+
+    it "Comprueba si esta el Javascript en el servidor" do
+		@js="/public/js/chat.js"
+		path = File.absolute_path(__FILE__)
+		path=path+@js
+		path=path.split('/test/rspec_test.rb')
+		path=path[0]+path[1]
+
+	expect (File.exists?(path))
+    end
 
 end

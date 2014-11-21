@@ -1,7 +1,7 @@
 {
   "Unit Tests": {
     "coverage": {
-      "/Users/artema/Documents/PracticasDiseñoWeb/practicachat/chat.rb": [
+      "/home/nook1e/Documentos/sytw_practica6_chat/chat.rb": [
         null,
         null,
         1,
@@ -201,7 +201,7 @@
         null,
         null
       ],
-      "/Users/artema/Documents/PracticasDiseñoWeb/practicachat/model.rb": [
+      "/home/nook1e/Documentos/sytw_practica6_chat/model.rb": [
         1,
         1,
         1,
@@ -211,6 +211,6 @@
         null
       ]
     },
-    "timestamp": 1416536796
+    "timestamp": 1416553514
   }
 }
