@@ -92,24 +92,26 @@ describe "Capybara and selenium tests" do
 
 
     it "log anonymous" do
-      page.driver.browser.switch_to.alert.accept
+
       Capybara.visit(@site)
+      page.driver.browser.switch_to.alert.accept
       Capybara.click_button('anonimo')
       Capybara.fill_in 'text', :with => 'Prueba'
       assert(true)
     end
 
     it "log with nick" do
-      page.driver.browser.switch_to.alert.accept
+      
       Capybara.visit(@site)
+      page.driver.browser.switch_to.alert.accept
       Capybara.fill_in 'nickname', :with => 'Test'
       Capybara.click_button('entrar')
       assert(true)
     end
 
     it "register" do
-      page.driver.browser.switch_to.alert.accept
       Capybara.visit(@site)
+      page.driver.browser.switch_to.alert.accept
       Capybara.click_link('registro')
       assert(true)
     end
