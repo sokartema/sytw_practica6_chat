@@ -94,16 +94,16 @@ describe "Capybara and selenium tests" do
     it "log anonymous" do
 
       Capybara.visit(@site)
-      page.driver.browser.switch_to.alert.accept
+      Capybara.page.driver.browser.switch_to.alert.accept rescue Selenium::WebDriver::Error::NoAlertOpenError
       Capybara.click_button('anonimo')
       Capybara.fill_in 'text', :with => 'Prueba'
       assert(true)
     end
 
     it "log with nick" do
-      
+
       Capybara.visit(@site)
-      page.driver.browser.switch_to.alert.accept
+      Capybara.page.driver.browser.switch_to.alert.accept rescue Selenium::WebDriver::Error::NoAlertOpenError
       Capybara.fill_in 'nickname', :with => 'Test'
       Capybara.click_button('entrar')
       assert(true)
@@ -111,7 +111,7 @@ describe "Capybara and selenium tests" do
 
     it "register" do
       Capybara.visit(@site)
-      page.driver.browser.switch_to.alert.accept
+      Capybara.page.driver.browser.switch_to.alert.accept rescue Selenium::WebDriver::Error::NoAlertOpenError
       Capybara.click_link('registro')
       assert(true)
     end

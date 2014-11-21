@@ -16,7 +16,7 @@ def app
 end
 
 describe "Login testing" do
-  
+
 	before :all do
 	  @browser=Selenium::WebDriver.for :firefox
 	  @site='http://practicachatsytw.herokuapp.com'
@@ -36,7 +36,7 @@ describe "Login testing" do
 
 		body_element = @browser.find_element(:tag_name => "body")
 		body_element=body_element.text.to_s
-		
+
 		value=false
 		if body_element.include? "Send"
 			value=true
@@ -45,25 +45,24 @@ describe "Login testing" do
 
 	end
 		it "posting anonymous" do
-	  
+
 		@browser.get(@site)
 		@browser.manage.timeouts.implicit_wait=3
 		element=@browser.find_element :id => "anonimo"
 		element.click
 		@browser.manage.timeouts.implicit_wait=3
 		body_element=@browser.find_element(:id =>"text").send_keys("testing")
-		
+
 		#body_element.send_keys(Keys.RETURN)
 		body_element=body_element.text.to_s
-		
+
 		value=false
 		if body_element.include? "testing"
 			value=true
 		end
 		assert(value)
 		@browser.close()
-		
+
 	end
 
 end
-
